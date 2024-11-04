@@ -1,0 +1,33 @@
+/* .todo-accordion .accordion-item, .todo-accordion .accordion-button {
+    background-color: #111204 !important;
+    border: none !important;
+    color: #FFFFFF;
+}
+
+.todo-accordion .accordion-item:focus, .todo-accordion .accordion-button:focus, .todo-accordion .accordion-item:active, .todo-accordion .accordion-button:active {
+    border: none !important;
+    box-shadow: none !important;
+    color: #FFFFFF;
+}
+
+.todo-accordion .accordion-item {
+    border-radius: 5rem !important;
+} */
+
+.bg-item {
+    background-color: #111204 !important;
+    color: #FFFFFF !important;  
+}
+
+.accordion-detail {
+    background-color: #F2FFE0;
+    color: black;
+}
+
+.css-1umw9bq-MuiSvgIcon-root {
+    color: #FFFFFF !important;
+}
+
+.css-1808mag-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+    margin: 0 0;
+}

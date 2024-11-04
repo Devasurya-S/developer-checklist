@@ -6,8 +6,10 @@ function App() {
 
   return (
     <>
-      <ChecklistHead/>
-      <ChecklistBody/>
+      <section className='d-flex flex-column align-items-center min-vh-100 justify-content-center gap-3 py-4'>
+        <ChecklistHead/>
+        <ChecklistBody/>
+      </section>
     </>
   )
 }
