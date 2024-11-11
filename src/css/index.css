@@ -1,0 +1,31 @@
+.width-control {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .width-control {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .width-control {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .width-control {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .width-control {
+        width: 40%;
+    }
+}
+
+.prev-btn {
+    rotate: 180deg;
+}

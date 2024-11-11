@@ -28,6 +28,6 @@
     color: #FFFFFF !important;
 }
 
-.css-1808mag-MuiPaper-root-MuiAccordion-root.Mui-expanded {
-    margin: 0 0;
+.css-1808mag-MuiPaper-root-MuiAccordion-root.Mui-expanded, .css-1808mag-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+    margin-top: 0 !important;
 }
