@@ -1,55 +1,11 @@
-// import * as React from 'react';
-// import Accordion from '@mui/material/Accordion';
-// import AccordionSummary from '@mui/material/AccordionSummary';
-// import AccordionDetails from '@mui/material/AccordionDetails';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-// export default function AccordionUsage(items) {
-//   return (
-//     <div>
-//       <Accordion className='mb-2 border-none shadow-none bg-item rounded-4'>
-//         <AccordionSummary
-//           expandIcon={<ExpandMoreIcon />}
-//           aria-controls="panel1-content"
-//           id="panel1-header"
-//           className='fs-5'
-//         >
-//           Utilize Figma Components for Repetition
-//         </AccordionSummary>
-//         <AccordionDetails>
-//           <p className='accordion-detail p-3 rounded-4'>Convert recurring combinations of elements into Figma components.</p>
-//           <p className='accordion-detail p-3 rounded-4'>Examples include type lockups, links, buttons, card and previews.</p>
-//           <p className='accordion-detail p-3 rounded-4'>Consider turning repeated blocks of vertical content on multiple pages into components.</p>
-//         </AccordionDetails>
-//       </Accordion>
-//       <Accordion className='mb-2 border-none shadow-none bg-item rounded-4'>
-//         <AccordionSummary
-//           expandIcon={<ExpandMoreIcon />}
-//           aria-controls="panel2-content"
-//           id="panel2-header"
-//           className='fs-5'
-//         >
-//           Organize Components Effectively
-//         </AccordionSummary>
-//         <AccordionDetails>
-//           <p className='accordion-detail p-3 rounded-4'>Move main components (original source components) to a dedicated "Components" frame.</p>
-//           <p className='accordion-detail p-3 rounded-4'>Organinze components within this frame by type for clarity and efficent management.</p>
-//         </AccordionDetails>
-//       </Accordion>
-//     </div>
-//   );
-// }
-
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import '../css/accordion.css';
 
-export default function AccordionUsage(props) {
-  const { items } = props;
-
-  // If items are empty or not passed correctly
+export default function AccordionUsage({ items, onStatusChange }) {
   if (!items || !Array.isArray(items) || items.length === 0) {
     return <p>No items available</p>;
   }
@@ -57,23 +13,43 @@ export default function AccordionUsage(props) {
   return (
     <div>
       {items.map((item, itemIndex) => (
-        <Accordion key={itemIndex} className='mb-2 border-none shadow-none bg-item rounded-4'>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={`panel${itemIndex}-content`}
-            id={`panel${itemIndex}-header`}
-            className='fs-5'
-          >
-            {item.name}
-          </AccordionSummary>
+        <Accordion key={itemIndex} className="mb-2 border-none shadow-none bg-item rounded-4">
+          <div className='d-flex align-items-center'>
+            <input
+              type="checkbox"
+              id={`item-${itemIndex}`}
+              checked={item.status} // The status for the item
+              onChange={(e) => {
+                e.stopPropagation(); // Prevent the checkbox click from affecting the accordion
+                onStatusChange(itemIndex); // Toggle the item's status
+              }}
+              className="custom-checkbox ms-3"
+            />
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={`panel${itemIndex}-content`}
+              id={`panel${itemIndex}-header`}
+              className="fs-5 w-100"
+              >
+              <label className={`mb-0 fs-6 ${item.status ? 'text-decoration-line-through fst-italic' : ''}`}>
+                {item.name}
+              </label>
+            </AccordionSummary>
+          </div>
+          
           <AccordionDetails>
-            {/* <p className='accordion-detail p-3 rounded-4'>
-              {item.description}
-            </p> */}
             {item.descriptions.map((description, descIndex) => (
-              <p key={descIndex} className='accordion-detail p-3 rounded-4'>
-                {description}
-              </p>
+              <div
+                key={descIndex}
+                className="d-flex justify-content-between align-items-center accordion-detail p-3 rounded-4 mb-2"
+              >
+                <p
+                  htmlFor={`desc-${itemIndex}-${descIndex}`}
+                  className="w-100 fs-6 mb-0"
+                >
+                  {description.text}
+                </p>
+              </div>
             ))}
           </AccordionDetails>
         </Accordion>
@@ -81,37 +57,3 @@ export default function AccordionUsage(props) {
     </div>
   );
 }
-
-// import * as React from 'react';
-// import Accordion from '@mui/material/Accordion';
-// import AccordionSummary from '@mui/material/AccordionSummary';
-// import AccordionDetails from '@mui/material/AccordionDetails';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-// export default function AccordionUsage(props) {
-//   const {items} = props
-//   console.log(items)
-//   return (
-//     <div>
-//       {items.map((item, index) => (
-//         <Accordion key={index} className='mb-2 border-none shadow-none bg-item rounded-4'>
-//           <AccordionSummary
-//             expandIcon={<ExpandMoreIcon />}
-//             aria-controls={`panel${index + 1}-content`}
-//             id={`panel${index + 1}-header`}
-//             className='fs-5'
-//           >
-//             {item.name}
-//           </AccordionSummary>
-//           <AccordionDetails>
-//             {item.descriptions.map((description, descIndex) => (
-//               <p key={descIndex} className='accordion-detail p-3 rounded-4'>
-//                 {description}
-//               </p>
-//             ))}
-//           </AccordionDetails>
-//         </Accordion>
-//       ))}
-//     </div>
-//   );
-// }

@@ -4,14 +4,14 @@ export default function NavButton(props) {
 
     if(actionType === "previous") {
         return (
-            <button className="btn" onClick={actionToDo}>
-                <img src="./images/nav-arrow.png" className="prev-btn" alt=""/>
+            <button className="btn nav-btn border-0" onClick={actionToDo}>
+                <i className="fs-2 fa-solid fa-circle-chevron-right prev-btn"></i>
             </button>
         )
     } else if(actionType === "next") {
         return (
-            <button className="btn" onClick={actionToDo}>
-                <img src="./images/nav-arrow.png" alt=""/>
+            <button className="btn nav-btn border-0" onClick={actionToDo}>
+                <i className="fs-2 fa-solid fa-circle-chevron-right"></i>
             </button>
         )
     }
